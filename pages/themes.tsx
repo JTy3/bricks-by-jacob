@@ -18,7 +18,7 @@ export async function getStaticProps() {
   }
 }
 
-export default function Themes(props) {
+export default function Themes(props: any) {
   const { allThemeData } = props;
   return (
     <Layout>
@@ -29,7 +29,7 @@ export default function Themes(props) {
         <section>
           <div className="row">
             {
-              allThemeData.map((item) => (
+              allThemeData.map((item: any) => (
                 <div className="col-2 border text-center" key={item.id}>
                   <Link href={`/themes/${item.id}`}>
                     <a>{item.name}</a>
