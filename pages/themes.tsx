@@ -11,7 +11,7 @@ export async function getStaticProps() {
 
     let allThemeData = JSON.parse(JSON.stringify(result));
     return {
-      props: { allThemeData }, 
+      props: { allThemeData },
     };
   } catch (e) {
     return { props: { allThemeData: false } };
@@ -27,16 +27,19 @@ export default function Themes(props: any) {
       </Head>
       <div className="row mt-3">
         <section>
+          <h2>Themes</h2>
           <div className="row">
-            {
-              allThemeData.map((item: any) => (
-                <div className="col-2 border text-center" key={item.id}>
-                  <Link href={`/themes/${item.id}`}>
-                    <a>{item.name}</a>
-                  </Link>
-                </div>
-              ))
-            }
+            {allThemeData.map((item: any) => {
+              if (item.parent_id == 0) {
+                return (
+                  <div className="col-2 border text-center" key={item.id}>
+                    <Link href={`/themes/${item.id}`}>
+                      <a>{item.name}</a>
+                    </Link>
+                  </div>
+                );
+              }
+            })}
           </div>
         </section>
       </div>

@@ -9,6 +9,7 @@ const Home: NextPage = () => {
       title: "Discover Lego Themes",
       content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
       linkLabel: "View All Themes",
+      linkUrl: "/themes",
       bgColor: "bg-light",
       txtColor: "dark"
     },
@@ -16,6 +17,7 @@ const Home: NextPage = () => {
       title: "Meet New Minifigs!",
       content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
       linkLabel: "Explore Minifigs",
+      linkUrl: "/themes",
       bgColor: "bg-warning",
       txtColor: "dark"
     },
@@ -23,6 +25,7 @@ const Home: NextPage = () => {
       title: "Need Spares?",
       content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
       linkLabel: "Find Spare Parts",
+      linkUrl: "/themes",
       bgColor: "bg-success",
       txtColor: "light"
     },
