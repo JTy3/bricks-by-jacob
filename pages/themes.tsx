@@ -32,7 +32,7 @@ export default function Themes(props: any) {
             {allThemeData.map((item: any) => {
               if (item.parent_id == 0) {
                 return (
-                  <div className="col-2 my-2 text-center" key={item.id}>
+                  <div className="col-6 col-md-4 col-lg-2 my-2 text-center" key={item.id}>
                     <div className="card">
                       <img
                         src="https://www.pngfind.com/pngs/m/205-2052747_enjoy-6-weeks-of-engineering-fun-with-legos.png"
