@@ -1,5 +1,6 @@
 import Layout from "../../components/layout/layout";
 import Head from "next/head";
+import Link from "next/link";
 import Jumbotron from "../../components/jumbotron/jumbotron";
 import { getAllSetIds, getSetsData } from "../../lib/sets";
 
@@ -39,7 +40,9 @@ export default function Set({ setData }: any) {
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
-            <a href="/themes">Themes</a>
+            <Link href="/themes">
+              <a>Themes</a>
+            </Link>
           </li>
           <li className="breadcrumb-item">
             <a href={`/themes/${setData.theme_id}`}>{setData.theme_name}</a>

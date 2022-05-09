@@ -3,6 +3,7 @@ import Head from "next/head";
 import { getAllThemeIds, getThemeData } from "../../lib/theme";
 import { getThemesSets } from "../../lib/sets";
 import Link from "next/link";
+import Image from "next/image";
 import Jumbotron from "../../components/jumbotron/jumbotron";
 
 export async function getStaticProps({ params }: any) {
@@ -31,7 +32,7 @@ export default function Theme({ themeData, themeSets }: any) {
     content:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
     linkLabel: "See More",
-    linkUrl: '#',
+    linkUrl: "#",
     bgColor: "bg-light",
     txtColor: "dark",
   };
@@ -44,7 +45,9 @@ export default function Theme({ themeData, themeSets }: any) {
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
-            <a href="/themes">Themes</a>
+            <Link href="/themes">
+              <a>Themes</a>
+            </Link>
           </li>
           {themeData.length == 1 && (
             <li className="breadcrumb-item active" aria-current="page">
@@ -65,12 +68,17 @@ export default function Theme({ themeData, themeSets }: any) {
         {themeData.length > 1 && <h2>Child Themes</h2>}
         {themeData.length > 1 &&
           themeData.map((item: any) => (
-            <div className="col-6 col-md-4 col-lg-2 my-2 text-center" key={item.childId}>
+            <div
+              className="col-6 col-md-4 col-lg-2 my-2 text-center"
+              key={item.childId}
+            >
               <div className="card">
-                <img
+                <Image
                   src="https://www.pngfind.com/pngs/m/130-1307018_green-lego-brick-png-transparent-png.png"
                   className="card-img-top"
-                  alt="..."
+                  alt={`Lego by Jacob - ${item.childName}`}
+                  height={160}
+                  width={200}
                 />
                 <div className="card-body">
                   <h5 className="card-title">{item.childName}</h5>
@@ -83,18 +91,23 @@ export default function Theme({ themeData, themeSets }: any) {
           ))}
         <h2 className="mt-4">Individual Sets</h2>
         {themeSets.map((item: any) => (
-          <div className="col-6 col-md-4 col-lg-2 my-2 text-center" key={item.set_num}>
+          <div
+            className="col-6 col-md-4 col-lg-2 my-2 text-center"
+            key={item.set_num}
+          >
             <div className="card">
-              <img
+              <Image
                 src="https://www.pngfind.com/pngs/m/46-468741_lego-clipart-lego-castle-lego-hd-png-download.png"
                 className="card-img-top"
-                alt="..."
+                alt={`Lego by Jacob - ${item.name}`}
+                height={160}
+                width={200}
               />
               <div className="card-body">
                 <h5 className="card-title">{item.name}</h5>
                 <p className="card-text">
                   Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  the bulk of the cards content.
                 </p>
                 <Link href={`/sets/${item.set_num}`}>
                   <a>Learn More</a>

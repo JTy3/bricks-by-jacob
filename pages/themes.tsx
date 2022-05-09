@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import Layout, { siteTitle } from "../components/layout/layout";
 import { sql_query } from "../lib/db";
 
@@ -32,12 +33,17 @@ export default function Themes(props: any) {
             {allThemeData.map((item: any) => {
               if (item.parent_id == 0) {
                 return (
-                  <div className="col-6 col-md-4 col-lg-2 my-2 text-center" key={item.id}>
+                  <div
+                    className="col-6 col-md-4 col-lg-2 my-2 text-center"
+                    key={item.id}
+                  >
                     <div className="card">
-                      <img
+                      <Image
                         src="https://www.pngfind.com/pngs/m/205-2052747_enjoy-6-weeks-of-engineering-fun-with-legos.png"
                         className="card-img-top"
-                        alt="..."
+                        alt={`Lego by Jacob - ${item.name}`}
+                        height={160}
+                        width={200}
                       />
                       <div className="card-body">
                         <h5 className="card-title">{item.name}</h5>

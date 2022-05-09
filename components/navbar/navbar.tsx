@@ -1,10 +1,11 @@
+import Link from "next/link";
 export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light border rounded-3 my-3">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
-          Lego Catalog
-        </a>
+        <Link className="navbar-brand" href="/">
+          Lego by Jacob
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -19,9 +20,9 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto me-3 mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">
-                Home
-              </a>
+              <Link aria-current="page" href="/">
+                <a className="nav-link active">Home</a>
+              </Link>
             </li>
             <li className="nav-item dropdown">
               <a
@@ -36,9 +37,9 @@ export default function Navbar() {
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a className="dropdown-item" href="/themes">
-                    Themes
-                  </a>
+                  <Link href="/themes">
+                    <a className="dropdown-item">Themes</a>
+                  </Link>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
