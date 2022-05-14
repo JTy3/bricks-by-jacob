@@ -73,7 +73,7 @@ export default function Set({ setData, partsList }: any) {
           <tbody>
             {partsList.length > 1 &&
               partsList.map((item: any) => (
-                <tr>
+                <tr key={item.part_num}>
                   <th scope="row">{item.part_num}</th>
                   <td>{item.color_id}</td>
                   <td>{item.quantity}</td>
