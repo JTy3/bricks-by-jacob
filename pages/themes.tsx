@@ -37,21 +37,16 @@ export default function Themes(props: any) {
                     className="col-6 col-md-4 col-lg-2 my-2 text-center"
                     key={item.id}
                   >
-                    <div className="card">
-                      <Image
-                        src="https://www.pngfind.com/pngs/m/205-2052747_enjoy-6-weeks-of-engineering-fun-with-legos.png"
-                        className="card-img-top"
-                        alt={`Lego by Jacob - ${item.name}`}
-                        height={160}
-                        width={200}
-                      />
-                      <div className="card-body">
-                        <h5 className="card-title">{item.name}</h5>
-                        <Link href={`/themes/${item.id}`}>
-                          <a>Learn more</a>
-                        </Link>
+                    <Link href={`/themes/${item.id}`}>
+                      <div className="card">
+                        <div className="card-body">
+                          <h5 className="card-title">{item.name}</h5>
+                          <Link href={`/themes/${item.id}`}>
+                            <a>Learn more</a>
+                          </Link>
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                   </div>
                 );
               }

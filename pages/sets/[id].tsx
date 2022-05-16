@@ -1,17 +1,15 @@
-import Layout from "../../components/layout/layout";
 import Head from "next/head";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import Layout from "../../components/layout/layout";
 import Jumbotron from "../../components/jumbotron/jumbotron";
 import { getAllSetIds, getSetsData } from "../../lib/sets";
-import { getSetPartsList } from "../../lib/parts";
 
 export async function getStaticProps({ params }: any) {
   const setData = await getSetsData(JSON.stringify(params.id));
-  const partsList = await getSetPartsList(JSON.stringify(params.id));
   return {
     props: {
       setData,
-      partsList,
     },
   };
 }
@@ -24,9 +22,12 @@ export async function getStaticPaths() {
   };
 }
 
-export default function Set({ setData, partsList }: any) {
+export default function Set({ setData }: any) {
+  const [partsList, setPartsList] = useState([]);
+
   const set = {
     title: setData.name,
+    badge: null,
     content:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
     linkLabel: "Buy Set",
@@ -34,6 +35,14 @@ export default function Set({ setData, partsList }: any) {
     bgColor: "bg-light",
     txtColor: "dark",
   };
+
+  useEffect(() => {
+    fetch(`/api/sets/${setData.set_num}`)
+      .then((results) => results.json())
+      .then((data) => {
+        setPartsList(data);
+      });
+  }, []);
 
   return (
     <Layout>
@@ -60,22 +69,30 @@ export default function Set({ setData, partsList }: any) {
           <Jumbotron {...set}></Jumbotron>
         </div>
       </div>
-      <div className="row my-5">
-        {partsList.length > 1 && <h2>Parts List for {setData.name}</h2>}
+      <div className="row my-3 p-3">
+        {partsList.length > 1 ? (
+          <h2>Parts List for {setData.name}</h2>
+        ) : (
+          <h4>Loading parts...</h4>
+        )}
         <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">Part No.</th>
-              <th scope="col">Part Color</th>
-              <th scope="col">Quantity</th>
-            </tr>
-          </thead>
+          {partsList.length > 1 ? (
+            <thead>
+              <tr>
+                <th scope="col">Part No.</th>
+                <th scope="col">Part Name</th>
+                <th scope="col">Part Color</th>
+                <th scope="col">Quantity</th>
+              </tr>
+            </thead>
+          ) : ( <></> )}
           <tbody>
             {partsList.length > 1 &&
               partsList.map((item: any) => (
                 <tr key={item.part_num}>
                   <th scope="row">{item.part_num}</th>
-                  <td>{item.color_id}</td>
+                  <td>{item.part_name}</td>
+                  <td>{item.color_name} - <i className="bi bi-circle-fill" style={{color: `#${item.color_code}`}}></i></td>
                   <td>{item.quantity}</td>
                 </tr>
               ))}

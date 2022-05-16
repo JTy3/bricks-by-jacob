@@ -29,6 +29,7 @@ export async function getStaticPaths() {
 export default function Theme({ themeData, themeSets }: any) {
   const theme = {
     title: themeData[0].name,
+    badge: null,
     content:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
     linkLabel: "See More",
@@ -72,21 +73,16 @@ export default function Theme({ themeData, themeSets }: any) {
               className="col-6 col-md-4 col-lg-2 my-2 text-center"
               key={item.childId}
             >
-              <div className="card">
-                <Image
-                  src="https://www.pngfind.com/pngs/m/130-1307018_green-lego-brick-png-transparent-png.png"
-                  className="card-img-top"
-                  alt={`Lego by Jacob - ${item.childName}`}
-                  height={160}
-                  width={200}
-                />
-                <div className="card-body">
-                  <h5 className="card-title">{item.childName}</h5>
-                  <Link href={`/themes/${item.childId}`}>
-                    <a>See sets</a>
-                  </Link>
+              <Link href={`/themes/${item.childId}`}>
+                <div className="card">
+                  <div className="card-body">
+                    <h5 className="card-title">{item.childName}</h5>
+                    <Link href={`/themes/${item.childId}`}>
+                      <a>See sets</a>
+                    </Link>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           ))}
         <h2 className="mt-4">Individual Sets</h2>
@@ -95,25 +91,16 @@ export default function Theme({ themeData, themeSets }: any) {
             className="col-6 col-md-4 col-lg-2 my-2 text-center"
             key={item.set_num}
           >
-            <div className="card">
-              <Image
-                src="https://www.pngfind.com/pngs/m/46-468741_lego-clipart-lego-castle-lego-hd-png-download.png"
-                className="card-img-top"
-                alt={`Lego by Jacob - ${item.name}`}
-                height={160}
-                width={200}
-              />
-              <div className="card-body">
-                <h5 className="card-title">{item.name}</h5>
-                <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the cards content.
-                </p>
-                <Link href={`/sets/${item.set_num}`}>
-                  <a>Learn More</a>
-                </Link>
+            <Link href={`/sets/${item.set_num}`}>
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">{item.name}</h5>
+                  <Link href={`/sets/${item.set_num}`}>
+                    <a>Learn More</a>
+                  </Link>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
         ))}
       </div>

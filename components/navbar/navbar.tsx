@@ -24,36 +24,42 @@ export default function Navbar() {
                 <a className="nav-link active">Home</a>
               </Link>
             </li>
+            <li className="nav-item">
+              <Link href="#">
+                <a className="nav-link active">About</a>
+              </Link>
+            </li>
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
                 href="#"
-                id="navbarDropdown"
+                id="discoverDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 Discover
               </a>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul className="dropdown-menu" aria-labelledby="discoverDropdown">
                 <li>
                   <Link href="/themes">
                     <a className="dropdown-item">Themes</a>
                   </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Sets
+                  <a className="dropdown-item disabled" href="#">
+                    Sets <span className="badge bg-success">Coming soon</span>
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Minifigs
+                  <a className="dropdown-item disabled" href="#">
+                    Minifigs{" "}
+                    <span className="badge bg-success">Coming soon</span>
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Parts
+                  <a className="dropdown-item disabled" href="#">
+                    Parts <span className="badge bg-success">Coming soon</span>
                   </a>
                 </li>
               </ul>
