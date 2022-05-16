@@ -6,6 +6,7 @@ const nextConfig = {
       "www.pngfind.com"
     ],
   },
+  webpack5: false,
 }
 
 module.exports = nextConfig
