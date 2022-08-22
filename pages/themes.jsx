@@ -6,10 +6,9 @@ import { sql_query } from "../lib/db";
 
 export async function getStaticProps() {
   try {
-    const result = await sql_query(`
-      SELECT * FROM themes
-  `);
-    let allThemeData = JSON.parse(JSON.stringify(result));
+    let allThemeData = await sql_query('SELECT * FROM themes').then(([rows]) => {
+      return JSON.parse(JSON.stringify(rows));
+    });
     return {
       props: { allThemeData },
     };
@@ -19,7 +18,7 @@ export async function getStaticProps() {
   }
 }
 
-export default function Themes(props: any) {
+export default function Themes(props) {
   const { allThemeData } = props;
   console.log(allThemeData);
   return (
@@ -31,7 +30,7 @@ export default function Themes(props: any) {
         <section>
           <h2>Themes</h2>
           <div className="row">
-            {allThemeData.map((item: any) => {
+            {allThemeData.map((item) => {
               if (item.parent_id == 0) {
                 return (
                   <div
