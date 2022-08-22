@@ -9,18 +9,19 @@ export async function getStaticProps() {
     const result = await sql_query(`
       SELECT * FROM themes
   `);
-
     let allThemeData = JSON.parse(JSON.stringify(result));
     return {
       props: { allThemeData },
     };
   } catch (e) {
+    console.log(e);
     return { props: { allThemeData: false } };
   }
 }
 
 export default function Themes(props: any) {
   const { allThemeData } = props;
+  console.log(allThemeData);
   return (
     <Layout>
       <Head>
